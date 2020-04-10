@@ -1,28 +1,38 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-content>
+      <v-row>
+        <v-col :cols="calcCols" v-for="(item, index) of websites" :key="index">
+          <source-page class="d-inline" :website-url="item" />
+        </v-col>
+      </v-row>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SourcePage from "./components/SourcePage";
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+  name: "App",
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  components: {
+    SourcePage
+  },
+
+  data: () => ({
+    websites: [
+      "heise.de/rss/heise-atom.xml",
+      "https://rss.golem.de/rss.php?feed=ATOM1.0",
+    ]
+  }),
+
+  computed: {
+    calcCols () {
+      if (this.websites.length === 0) return 12
+
+      return 12 / this.websites.length
+    }
+  }
+};
+</script>

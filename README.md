@@ -1,4 +1,8 @@
-# news-reader
+# NEWS-READER
+
+This simple SPA will fetch `atom`-Websources and display them in a list.
+
+![application](./src/assets/application.png "Application")
 
 ## Project setup
 ```
@@ -14,11 +18,3 @@ npm run serve
 ```
 npm run build
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
